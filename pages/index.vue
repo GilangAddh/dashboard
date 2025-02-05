@@ -24,22 +24,15 @@
           <p class="text-[12px] underline">See more</p>
         </div>
         <div class="w-full h-[500px]">
-          <LMap
-            style="height: 350px"
-            :zoom="16"
-            :center="[-6.2088, 106.8459]"
-            :use-global-leaflet="false"
-          >
+          <LMap style="height: 350px" :zoom="16" :center="[-6.2088, 106.8459]">
             <LTileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&amp;copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
               layer-type="base"
               name="OpenStreetMap"
             />
-            <LMarker :lat-lng="[-6.2088, 106.8452]" :icon="customIcon">
-              <template #popup>
-                <b>Position 1</b>
-              </template>
+            <LMarker :lat-lng="[-6.2088, 106.8454]">
+              <LIcon :icon-url="iconUrl" :icon-size="iconSize" />
             </LMarker>
           </LMap>
         </div>
@@ -138,12 +131,8 @@ import L from "leaflet";
 
 const dayjs = useDayjs();
 
-const customIcon = new L.Icon({
-  iconUrl: "/icon.png",
-  iconSize: [48, 48],
-  iconAnchor: [10, 10],
-  popupAnchor: [0, -35],
-});
+const iconUrl = "/icon.png";
+const iconSize = 48;
 
 const details = {
   name: "Asep Gunawan",
