@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="border-b-4 mt-2">
-      <nav class="flex text-gray-500 text-sm">
+      <nav class="md:flex text-gray-500 text-sm">
         <a
           href="/"
           class="p-2 px-6 flex items-center gap-2"
