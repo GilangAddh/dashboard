@@ -23,15 +23,26 @@
           <h1 class="text-lg">Last Location</h1>
           <p class="text-[12px] underline">See more</p>
         </div>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14125.620960757906!2d106.82544110611863!3d-6.538317562071019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c1f16d898121%3A0x3e38ea30691d94a8!2sSAMSAT%20Cibinong%20Bogor!5e0!3m2!1sid!2sid!4v1738730425290!5m2!1sid!2sid"
-          height="450"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          class="rounded-lg"
-        ></iframe>
+        <div class="w-full h-[500px]">
+          <LMap
+            style="height: 350px"
+            :zoom="16"
+            :center="[-6.2088, 106.8459]"
+            :use-global-leaflet="false"
+          >
+            <LTileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&amp;copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+              layer-type="base"
+              name="OpenStreetMap"
+            />
+            <LMarker :lat-lng="[-6.2088, 106.8452]" :icon="customIcon">
+              <template #popup>
+                <b>Position 1</b>
+              </template>
+            </LMarker>
+          </LMap>
+        </div>
       </div>
     </div>
     <div class="flex flex-wrap mt-2 gap-4">
@@ -123,8 +134,16 @@
   
 <script setup lang="ts">
 import { useDayjs } from "#dayjs";
+import L from "leaflet";
 
 const dayjs = useDayjs();
+
+const customIcon = new L.Icon({
+  iconUrl: "/icon.png",
+  iconSize: [48, 48],
+  iconAnchor: [10, 10],
+  popupAnchor: [0, -35],
+});
 
 const details = {
   name: "Asep Gunawan",
